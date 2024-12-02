@@ -22,4 +22,14 @@ public class UserService {
             throw new Exception("Saldo insuficiente");
         }
     }
+
+    public User findUserById(Long id) throws Exception {
+        return this.repository.findUserById(id).orElseThrow(() -> new Exception(
+                "Usuário não encontrado"
+        ));
+    }
+
+    public void saveUser(User user) throws Exception {
+        this.repository.save(user);
+    }
 }
